@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+                <h4 style="font-size: 20px; color: brown; font-weight: bolder;"><i class="fa fa-angle-right"></i>Update
+                    Profile</h4>
+                <hr>
+                <div class="form-panel">
+                    <form role="form" class="form-horizontal style-form" method="POST"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="container">
+                            {{ form.username | as_crispy_field }}
+                            <br>
+                            {{ form.phone_number | as_crispy_field }}
+                            <br>
+                            {{ form.email | as_crispy_field }}
+                            <br>
+                            {{ form.roleid | as_crispy_field }}
+                            <br>
+                            {{ form.picture | as_crispy_field }}
+                            <br>
+                        </div>
+                        <button type="submit" class="btn btn-success">update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</section>
+{% endblock content %}

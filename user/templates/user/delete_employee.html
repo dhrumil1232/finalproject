@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="color: tomato; text-align: center; ">Delete employee #
+                            {{object.id}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <center>
+                                {% csrf_token %}
+                                <div class="alert alert-warning" role="alert">
+                                    Are you sure you want to delete <strong>{{ object }}</strong> ?
+                                </div>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock content %}
