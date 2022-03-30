@@ -22,7 +22,10 @@ class Customer(models.Model):
     contact = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
+    pincode = models.CharField(max_length=10)
+    area = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
+    profile_pic = models.ImageField(upload_to ="customer_img")
     class Meta:
         db_table = 'Customer'
     
@@ -34,6 +37,8 @@ class Housekeeper(models.Model):
     contact = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
+    pincode = models.CharField(max_length=10)
+    area = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
     experience = models.CharField(max_length=50)
     profile_pic = models.ImageField(upload_to ="housekeeper_img")

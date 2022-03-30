@@ -103,10 +103,13 @@ def LoginUser(request):
                 request.session['firstname'] =houskeeper.firstname
                 request.session['lastname'] =houskeeper.lastname
                 request.session['email'] =user.email
-                return redirect('index')
+                return redirect('housekeeperindex')
             else:
                 message = "Please Enter correct Password..."
-        return render(request,"user/login.html",{'msg':message})
+        else:
+            message = "User doesnot exist..."
+            return render(request,"user/login.html",{'msg':message})
+        
 
     elif request.POST['role']=="Customer":
         email = request.POST['email']
@@ -124,12 +127,52 @@ def LoginUser(request):
                 return redirect('index')
             else:
                 message = "Please Enter correct Password..."
-        return render(request,"user/login.html",{'msg':message})
+                return render(request,"user/login.html",{'msg':message})
 
     
-    else:
-        message = "User doesnot exist..."
-        return render(request,"user/login.html",{'msg':message})
+        else:
+            message = "User doesnot exist..."
+            return render(request,"user/login.html",{'msg':message})
 
+def ProfilePage(request,pk):
+        user = UserMaster.objects.get(pk=pk)
+        customer = Customer.objects.get(user_id =user)
+        return render(request,"user/profile.html", {'customer':customer,'user':user})
+        
+def UpdateProfile(request,pk):
+    user =  UserMaster.objects.get(pk=pk)
+    if user.role == "Customer":
+        customer = Customer.objects.get(user_id=user)
+        customer.contact = request.POST['contact']
+        customer.address = request.POST['address']
+        customer.pincode = request.POST['pincode']
+        customer.state = request.POST['state']
+        customer.area = request.POST['area']
+        customer.profile_pic = request.FILES['profile_pic']
+        customer.save()
+        url = f'/profile/{pk}'  
+        return redirect(url)       
+        ############################Housekeeeper#############################################
+def HousekeeperIndexPage(request):
+    return render(request,"app/housekeeper/index.html")
+            
+def HousekeeperProfilePage(request,pk):
+        user = UserMaster.objects.get(pk=pk)
+        housekeeper = Housekeeper.objects.get(user_id =user)
+        return render(request,"app/housekeeper/profile.html", {'housekeeper':housekeeper,'user':user})
+def HousekeeperUpdateProfile(request,pk):
+    user =  UserMaster.objects.get(pk=pk)
+    if user.role == "Housekeeper":
+        housekeeper = Housekeeper.objects.get(user_id=user)
+        housekeeper.contact = request.POST['contact']
+        housekeeper.address = request.POST['address']
+        housekeeper.pincode = request.POST['pincode']
+        housekeeper.state = request.POST['state']
+        housekeeper.area = request.POST['area']
+        housekeeper.profile_pic = request.FILES['profile_pic']
+        housekeeper.save()
+        url = f'/housekeeperprofile/{pk}'  
+        return redirect(url)       
         
         
+                

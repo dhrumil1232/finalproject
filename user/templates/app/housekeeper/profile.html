@@ -56,7 +56,7 @@ body {
 </style>
 </head>
 <body>
-<form action="{% url 'updateprofile' pk=request.session.id %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'housekeeperupdateprofile' pk=request.session.id %}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
@@ -67,20 +67,20 @@ body {
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">CUSTOMER PROFILE</h4>
+                    <h4 class="text-right">HOUSEKEEPER PROFILE</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Firstname</label><input type="text" class="form-control" placeholder="firstname" value="{{customer.firstname}}"></div>
-                    <div class="col-md-6"><label class="labels">Lastname</label><input type="text" class="form-control" value="{{customer.lastname}}" placeholder="lastname"></div>
+                    <div class="col-md-6"><label class="labels">Firstname</label><input type="text" class="form-control" placeholder="firstname" value="{{housekeeper.firstname}}"></div>
+                    <div class="col-md-6"><label class="labels">Lastname</label><input type="text" class="form-control" value="{{housekeeper.lastname}}" placeholder="lastname"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Contact</label><input type="text" class="form-control" placeholder="Enter contact no"  name = "contact"value="{{customer.contact}}"></div>
-                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="Enter Address" name = "address" value="{{customer.address}}"></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="Enter Postcode" name = "pincode"value="{{customer.pincode}}"></div>
-                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="Enter State Name" name = "state"value="{{customer.state}}"></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="Enter your Area" name = "area" value="{{customer.area}}"></div>
+                    <div class="col-md-12"><label class="labels">Contact</label><input type="text" class="form-control" placeholder="Enter contact no"  name = "contact"value="{{housekeeper.contact}}"></div>
+                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="Enter Address" name = "address" value="{{housekeeper.address}}"></div>
+                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="Enter Postcode" name = "pincode"value="{{housekeeper.pincode}}"></div>
+                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="Enter State Name" name = "state"value="{{housekeeper.state}}"></div>
+                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="Enter your Area" name = "area" value="{{housekeeper.area}}"></div>
                     <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="Enter email id" value="{{user.email}}"readonly></div>
-                    <div class="col-md-12"><label class="labels">Profic Pic</label><input type="file" class="form-control" placeholder="Please Upload Pic"  name = "profile_pic"value="{{customer.profile_pic}}"readonly></div>
+                    <div class="col-md-12"><label class="labels">Profic Pic</label><input type="file" class="form-control" placeholder="Please Upload Pic"  name = "profile_pic"value="{{housekeeper.profile_pic}}"readonly></div>
                     
                     
                 </div>

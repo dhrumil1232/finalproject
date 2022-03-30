@@ -14,5 +14,21 @@ path("otppage/",views.OtpPage,name="otppage"),
 path("otpverify/",views.OtpVerify,name="otpverify"),
 path("login/",views.LoginPage,name="loginpage"),
 path("loginuser/",views.LoginUser,name="login"),
+path("profile/<int:pk>/",views.ProfilePage,name="profile"),
+path("updateprofile<int:pk>//",views.UpdateProfile,name="updateprofile"),
+
+#############Housekeeper####################
+path("housekeeperindex/",views.HousekeeperIndexPage,name="housekeeperindex"),
+path("housekeeperprofile/<int:pk>/",views.HousekeeperProfilePage,name="housekeeperprofile"),
+path("housekeeperupdateprofile/<int:pk>/",views.HousekeeperUpdateProfile,name="housekeeperupdateprofile"),
+
+
 
 ]
+
+from django.conf import settings
+
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
